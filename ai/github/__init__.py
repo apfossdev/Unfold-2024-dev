@@ -1,10 +1,10 @@
 from urllib.parse import urlparse
 import requests
 import json
-from project_health import calculate_commit_frequency, calculate_issue_resolution_time
-from anomaly_detection import detect_anomalies
-from sentiment_analysis import analyze_commit_sentiments
-from tech_score import calculate_tech_score
+from .project_health import calculate_commit_frequency, calculate_issue_resolution_time
+from .anomaly_detection import detect_anomalies
+from .sentiment_analysis import analyze_commit_sentiments
+from .tech_score import calculate_tech_score
 
 def analyze_github_repo(github_link):
     parsed_url = urlparse(github_link)

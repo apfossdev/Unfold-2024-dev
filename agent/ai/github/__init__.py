@@ -1,6 +1,7 @@
+import json
+import os
 from urllib.parse import urlparse
 import requests
-import json
 from .project_health import calculate_commit_frequency, calculate_issue_resolution_time
 from .anomaly_detection import detect_anomalies
 from .sentiment_analysis import analyze_commit_sentiments
@@ -32,7 +33,7 @@ def analyze_github_repo(github_link):
     total_pull_requests = fetch_total_count(owner, repo, "pulls")
     
     # Fetch recent data
-    commits = fetch_recent_commits(owner, repo, 10)
+    commits = fetch_recent_commits(owner, repo, 5)
     issues = fetch_recent_issues(owner, repo, 5)
     pull_requests = fetch_recent_pull_requests(owner, repo, 5)
     topics = fetch_github_repo_topics(owner, repo)
@@ -85,13 +86,13 @@ def analyze_github_repo(github_link):
     
     # Calculate Project Health
     commit_frequency = calculate_commit_frequency(result["commits"])
-    issue_resolution_time = calculate_issue_resolution_time(result["issues"])
+    # issue_resolution_time = calculate_issue_resolution_time(result["issues"])
     
     # Anomaly Detection
-    anomalies = detect_anomalies(result["commits"])
+    # anomalies = detect_anomalies(result["commits"])
     
     # Sentiment Analysis
-    commit_sentiments = analyze_commit_sentiments(result["commits"])
+    # commit_sentiments = analyze_commit_sentiments(result["commits"])
     
     # Calculate Tech Score
     tech_score = calculate_tech_score(
@@ -105,14 +106,14 @@ def analyze_github_repo(github_link):
     )
     
     result["commit_frequency"] = commit_frequency
-    result["issue_resolution_time"] = issue_resolution_time
-    result["anomalies"] = anomalies.tolist()
-    result["commit_sentiments"] = commit_sentiments
+    # result["issue_resolution_time"] = issue_resolution_time
+    # result["anomalies"] = anomalies.tolist()
+    # result["commit_sentiments"] = commit_sentiments
     result["tech_score"] = tech_score
     
     # Write the result to temp.json
-    with open('temp.json', 'w') as f:
-        json.dump(result, f, indent=4)
+    # with open('temp.json', 'w') as f:
+    #     json.dump(result, f, indent=4)
     
     return result
 
@@ -135,20 +136,24 @@ def fetch_github_repo_details(owner, repo):
     return response.json()
 
 def fetch_total_count(owner, repo, endpoint):
-    url = f"https://api.github.com/repos/{owner}/{repo}/{endpoint}?per_page=1&page=1"
+    url = f"https://api.github.com/repos/{owner}/{repo}/{endpoint}?per_page=1"
     response = requests.get(url)
     
     if response.status_code != 200:
         return {"error": f"Failed to fetch {endpoint} count"}
     
-    link_header = response.headers.get('Link', '')
-    if 'rel="last"' in link_header:
-        last_page_url = link_header.split(',')[1].split(';')[0].strip()[1:-1]
-        total_count = int(last_page_url.split('page=')[1].split('&')[0])
-    else:
-        total_count = len(response.json())
+    if 'Link' in response.headers:
+        links = response.headers['Link']
+        last_page_url = [link for link in links.split(',') if 'rel="last"' in link]
+        if last_page_url:
+            last_page_url = last_page_url[0].split(';')[0].strip('<> ')
+            last_page_response = requests.get(last_page_url)
+            if last_page_response.status_code == 200:
+                last_page_data = last_page_response.json()
+                page_num = int(last_page_url.split('page=')[-1])
+                return (page_num - 1) * 1 + len(last_page_data)
     
-    return total_count
+    return len(response.json())
 
 def fetch_recent_commits(owner, repo, count):
     url = f"https://api.github.com/repos/{owner}/{repo}/commits?per_page={count}"
@@ -188,6 +193,6 @@ def fetch_github_repo_topics(owner, repo):
     return response.json()
 
 # Example usage
-if __name__ == "__main__":
-    github_link = "https://github.com/calcom/cal.com"
-    result = analyze_github_repo(github_link)
+# if __name__ == "__main__":
+#     github_link = "https://github.com/calcom/cal.com"
+#     result = analyze_github_repo(github_link)

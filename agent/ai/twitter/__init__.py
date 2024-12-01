@@ -18,16 +18,16 @@ def analyze_twitter_profile(twitter_link):
     if "error" in username:
         return username
     
-    with open('tweets.json', 'r') as f:
+    with open('./ai/twitter/tweets.json', 'r') as f:
         tweets_data = json.load(f)
         
     if username not in tweets_data.keys():
         return {"error": "No tweets found for the user"}
     
     results = analyze_profile(tweets_data[username])
-    print(json.dumps(results, indent=4))
+    # print(json.dumps(results, indent=4))
     
-    return {"username": username, "social_score": 75}
+    return {"username": username, "twitter_metrics": results["average_metrics"], "social_score": results["social_score"]}
 
 def analyze_profile(tweets):
     

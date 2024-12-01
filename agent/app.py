@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 import requests
+import json
 from ai.twitter import analyze_twitter_profile
 from ai.github import analyze_github_repo
 
@@ -25,11 +26,12 @@ def analyze():
         return jsonify(github_analysis), 400
 
     response = {
-        "social_score": twitter_analysis["social_score"],
-        "tech_score": github_analysis["tech_score"],
-        "github_owner": github_analysis["owner"],
-        "github_repo": github_analysis["repo"]
+        "social_metrics": twitter_analysis,
+        "tech_metrics": github_analysis,
     }
+    
+    with open('temp.json', 'w') as f:
+        json.dump(response, f, indent=4)
 
     return jsonify(response)
 

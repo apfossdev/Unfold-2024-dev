@@ -48,13 +48,13 @@ def calculate_tech_score(owner_followers, owner_following, repo_watchers, repo_f
     
     
     #Print all parameters
-    print("owner_followers: ", owner_followers)
-    print("owner_following: ", owner_following)
-    print("repo_watchers: ", repo_watchers)
-    print("repo_forks: ", repo_forks)
-    print("repo_open_issues: ", repo_open_issues)
-    print("total_commits: ", total_commits)
-    print("commit_frequency: ", commit_frequency)
+    # print("owner_followers: ", owner_followers)
+    # print("owner_following: ", owner_following)
+    # print("repo_watchers: ", repo_watchers)
+    # print("repo_forks: ", repo_forks)
+    # print("repo_open_issues: ", repo_open_issues)
+    # print("total_commits: ", total_commits)
+    # print("commit_frequency: ", commit_frequency)
 
     # Score each metric based on predefined thresholds and points
     scores = {
@@ -67,10 +67,10 @@ def calculate_tech_score(owner_followers, owner_following, repo_watchers, repo_f
         "commit_frequency": score_metric(commit_frequency, THRESHOLDS["commit_frequency"], POINTS["commit_frequency"])
     }
     
-    print(scores)
+    # print(scores)
     # Calculate the sum of scores
     total = sum(scores.values())
-    print("TOTAL: ", total)
+    # print("TOTAL: ", total)
 
     # Ensure the score is between 0 and 100
     tech_score = min(max(total, 0), 100)

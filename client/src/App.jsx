@@ -1,10 +1,10 @@
 import './App.css'
-import { BackgroundLines } from './components/ui/background-lines'
+import AppRoutes from './routes'
 
 function App() {
   return(
     <>
-      <BackgroundLines />
+      <AppRoutes />
     </>
   )
 }

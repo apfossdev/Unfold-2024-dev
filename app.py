@@ -1,17 +1,9 @@
 from flask import Flask, request, jsonify, render_template
 import requests
+from ai.twitter import analyze_twitter_profile
+from ai.github import analyze_github_repo
 
 app = Flask(__name__)
-
-def analyze_twitter_profile(twitter_link):
-    # Placeholder function to analyze Twitter profile
-    # Implement your analysis logic here
-    return {"social_score": 75}
-
-def analyze_github_repo(github_link):
-    # Placeholder function to analyze GitHub repo
-    # Implement your analysis logic here
-    return {"tech_score": 85}
 
 @app.route('/')
 def index():
@@ -29,9 +21,14 @@ def analyze():
     twitter_analysis = analyze_twitter_profile(twitter_link)
     github_analysis = analyze_github_repo(github_link)
 
+    if "error" in github_analysis:
+        return jsonify(github_analysis), 400
+
     response = {
         "social_score": twitter_analysis["social_score"],
-        "tech_score": github_analysis["tech_score"]
+        "tech_score": github_analysis["tech_score"],
+        "github_owner": github_analysis["owner"],
+        "github_repo": github_analysis["repo"]
     }
 
     return jsonify(response)

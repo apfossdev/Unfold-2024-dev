@@ -1,5 +1,6 @@
-import { SuiClient, getFullnodeUrl } from "@mysten/sui.js/client";
-import { TransactionBlock, Signer } from "@mysten/sui.js/transactions";
+import { SuiClient } from "@mysten/sui/client";
+import { getFullnodeUrl } from "@mysten/sui/client";
+import { Transaction } from "@mysten/sui/transactions";
 
 // Initialize Sui Client
 const client = new SuiClient({ url: getFullnodeUrl("testnet") });
@@ -45,25 +46,24 @@ export class NFTService {
     recipient: string
   ) {
     try {
-      const tx = new TransactionBlock();
+      const tx = new Transaction();
 
       tx.moveCall({
         target: `${this.packageId}::${this.moduleId}::mint_professional_nft`,
         arguments: [
-          tx.pure(title),
-          tx.pure(description),
-          tx.pure(stats),
-          tx.pure(githubUrl),
-          tx.pure(twitterUrl),
-          tx.pure(contractAddress),
-          tx.pure(techScore),
-          tx.pure(socialScore),
-          tx.pure(recipient),
+          tx.pure.string(title),
+          tx.pure.string(description),
+          tx.pure.string(stats),
+          tx.pure.string(githubUrl),
+          tx.pure.string(twitterUrl),
+          tx.pure.address(contractAddress),
+          tx.pure.u8(techScore),
+          tx.pure.u8(socialScore),
+          tx.pure.address(recipient),
         ],
       });
 
-      const result = await client.signAndExecuteTransactionBlock({
-        signer,
+      const result = await signer.signAndExecuteTransactionBlock({
         transactionBlock: tx,
       });
 
@@ -76,20 +76,19 @@ export class NFTService {
 
   // Update NFT attributes
   async updateNFTDescription(
-    signer: Signer,
+    // signer: Signer,
     nftId: string,
     newDescription: string
   ) {
     try {
-      const tx = new TransactionBlock();
+      const tx = new Transaction();
 
       tx.moveCall({
         target: `${this.packageId}::${this.moduleId}::update_description`,
-        arguments: [tx.object(nftId), tx.pure(newDescription)],
+        arguments: [tx.object(nftId), tx.pure.string(newDescription)],
       });
 
-      return await client.signAndExecuteTransactionBlock({
-        signer,
+      return await signer.signAndExecuteTransactionBlock({
         transactionBlock: tx,
       });
     } catch (error) {

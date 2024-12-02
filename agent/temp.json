@@ -12,9 +12,9 @@
     },
     "tech_metrics": {
         "owner": {
-            "name": "Cal.com, Inc.",
-            "username": "calcom",
-            "followers": 1228,
+            "name": "Pyth Network",
+            "username": "pyth-network",
+            "followers": 586,
             "following": 0
         },
         "repo": {
@@ -27,29 +27,29 @@
         },
         "commits": [
             {
-                "message": "feat: show attributes in profile (#17920)",
+                "message": "Merge pull request #2154 from cprussin/finish-price-feeds-index\n\nfeat(insights): finish price feeds index",
                 "committer": "GitHub",
-                "committed_at": "2024-11-30T17:23:05Z"
+                "committed_at": "2024-12-01T01:07:29Z"
             },
             {
-                "message": "fix : Issue on docs (#17895)",
-                "committer": "GitHub",
-                "committed_at": "2024-11-29T19:50:57Z"
+                "message": "feat(insights): finish price feeds index",
+                "committer": "Connor Prussin",
+                "committed_at": "2024-11-30T21:16:33Z"
             },
             {
-                "message": "fix: Added proper updates/interactivity on the \"Getting started\" app integ\u2026 (#17903)\n\n* Added proper updates/interactivity on the \"Getting started\" app integrations.\r\n\r\n- InstallAppButtonWithoutPlanCheck properly vends the mutation data in the render's props\r\n- Fixed the improper props wiring in the AppConnectionItem\r\n- Added a loading state for reactivity\r\n\r\n* -Added toaster for error/success confirmation",
+                "message": "chore(networks)-add-new-networks (#2153)",
                 "committer": "GitHub",
-                "committed_at": "2024-11-29T19:14:01Z"
+                "committed_at": "2024-11-29T15:00:13Z"
             },
             {
-                "message": "build: Reduce bundle size from unnecessary bundeling react/jsx-runtime in embed-react package (#17790)\n\n* Update vite.config.js\n\n* linting fix\n\n---------\n\nCo-authored-by: Hariom <hariombalhara@gmail.com>",
+                "message": "Merge pull request #2150 from cprussin/update-tos\n\nchore(staking): update tos",
                 "committer": "GitHub",
-                "committed_at": "2024-11-29T16:49:16Z"
+                "committed_at": "2024-11-28T01:15:42Z"
             },
             {
-                "message": "fix: bulk attribute assignment (#17896)\n\nremove comment",
-                "committer": "GitHub",
-                "committed_at": "2024-11-29T10:00:20Z"
+                "message": "chore(staking): update tos",
+                "committer": "Connor Prussin",
+                "committed_at": "2024-11-28T00:59:16Z"
             }
         ],
         "issues": [
@@ -66,31 +66,31 @@
                 "body": "## What does this PR do?\r\n- The OpenGraph image attribute in the metadata is malformed due to improperly encoded parameters, resulting in an incorrect API call to the OpenGraph image endpoint (i.e., /api/social/og/image?type=generic&title=a+title&description=a+desc).\r\n-  The issue arises because Next.js's image optimization expects the url parameter to be a publicly accessible static image or a URL that returns an image directly. Since the /api/social/og/image endpoint is dynamically generating the image, Next.js can't optimize the image using its /_next/image system, and that's why we are getting a 404.\r\n- This PR fixes API URL in the og:image Meta Tag\r\n\r\n\r\n- Fixes #17931\r\n- Fixes CAL-17931\r\n\r\nhttps://www.loom.com/share/3e537446117b4e43bec71deef583f178?sid=dd65fbba-4a75-42d8-a476-cd660bee2d01\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n- Are there environment variables that should be set? - N/A\r\n- What are the minimal test data to have? - N/A\r\n- What is expected (happy path) to have (input and output)? - Successful API call to /api/social/og/image\r\n- Any other important info that could help to test that PR - N/A\r\n\r\n/claim #17931\r\n",
                 "raised_by": "mehul-m-prajapati",
                 "state": "open",
-                "created_at": "2024-12-02T03:30:46Z",
+                "created_at": "2024-12-01T02:45:53Z",
                 "closed_at": null
             },
             {
-                "title": "fix: Properly encoded metadata OpenGraph image parameters",
-                "body": "## What does this PR do?\r\n\r\nIn the metadata, the OpenGraph image attribute is malformed due to its parameters not being completed encoded, leading to an incorrect API call to the opengraph image end point (i.e /api/social/og/image?type=generic&title=a+title&description=a+desc)\r\n\r\n- Properly encoded OpenGraph image parameters\r\n- Fixes #17931\r\n- Fixes CAL-4823\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n- Loom Video with fix: https://www.loom.com/share/4f89328dd04b4871bb0f91d5d4905c1c?sid=559512f8-724d-40bd-ac6b-64bb513b0714\r\n- Loom Video without fix (URL params are not encoded): https://www.loom.com/share/a86bdadc1c6f4e448e9824a8bd5b9180 \r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n\r\n- Before changes, get the metadata's og-image attribute and try to access it on the browser.\r\n- View logs and observe API error for the /api/social/og/image endpoint\r\n- Add changes in and repeat steps to see fixes\r\n\r\n<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration. Write details that help to start the tests -->\r\n\r\n- Are there environment variables that should be set? \r\n  - N/A\r\n- What are the minimal test data to have?\r\n  - N/A\r\n- What is expected (happy path) to have (input and output)?\r\n  - No malformed api call to /api/social/og/image\r\n- Any other important info that could help to test that PR\r\n  - N/A \r\n\r\n/claim #17931\r\n",
-                "raised_by": "itsalam",
+                "title": "feat(target_chains/aptos): update libs + toolchain to 4.5.0",
+                "body": null,
+                "raised_by": "ali-bahjati",
                 "state": "open",
-                "created_at": "2024-12-01T22:24:41Z",
+                "created_at": "2024-11-29T12:00:00Z",
                 "closed_at": null
             },
             {
-                "title": "feat: add meeting link in workflow reminder template",
-                "body": "## What does this PR do?\r\n\r\n<!-- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->\r\n\r\nIt includes meeting link in the default reminder template for email and sms reminder workflows.\r\n\r\n- Fixes #17922 (GitHub issue number)\r\n- Fixes CAL-XXXX (Linear issue number - should be visible at the bottom of the GitHub issue description)\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [ ] I confirm automated tests are in place that prove my fix is effective or that my feature works.",
-                "raised_by": "kart1ka",
+                "title": "add comments and ignore bounced messages",
+                "body": null,
+                "raised_by": "cctdaniel",
                 "state": "open",
-                "created_at": "2024-12-01T20:51:43Z",
+                "created_at": "2024-11-28T06:02:48Z",
                 "closed_at": null
             },
             {
-                "title": "chore: fixed colored event margin",
-                "body": "![CleanShot 2024-12-01 at 19 19 27@2x](https://github.com/user-attachments/assets/16e0cde6-1411-46b4-a6d3-b4165dc8d5ea)\r\n",
-                "raised_by": "PeerRich",
+                "title": "Transaction version (0) is not supported by the requesting client, set maxSupportedTransactionVersion",
+                "body": "This is probably due to old anchor dependency used by `@pythnetwork/pyth-solana-receiver`\r\n```\r\nnode_modules/@solana/web3.js/src/connection.ts:5069\r\n      throw new SolanaJSONRPCError(res.error, 'failed to get transaction');\r\n            ^\r\n\r\nSolanaJSONRPCError: failed to get transaction: Transaction version (0) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 0\r\n    at Connection.getTransaction (node_modules/@solana/web3.js/src/connection.ts:5069:13)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\r\n    at AnchorProvider.sendAll (node_modules/@pythnetwork/pyth-solana-receiver/node_modules/@coral-xyz/anchor/src/provider.ts:256:28)\r\n    at <anonymous> (pythPush.ts:63:5) {\r\n  code: -32015,\r\n  data: undefined\r\n}\r\n\r\n```",
+                "raised_by": "kskalski",
                 "state": "open",
-                "created_at": "2024-12-01T19:19:52Z",
+                "created_at": "2024-11-27T09:38:46Z",
                 "closed_at": null
             }
         ],
@@ -109,34 +109,34 @@
                 "body": "## What does this PR do?\r\n- The OpenGraph image attribute in the metadata is malformed due to improperly encoded parameters, resulting in an incorrect API call to the OpenGraph image endpoint (i.e., /api/social/og/image?type=generic&title=a+title&description=a+desc).\r\n-  The issue arises because Next.js's image optimization expects the url parameter to be a publicly accessible static image or a URL that returns an image directly. Since the /api/social/og/image endpoint is dynamically generating the image, Next.js can't optimize the image using its /_next/image system, and that's why we are getting a 404.\r\n- This PR fixes API URL in the og:image Meta Tag\r\n\r\n\r\n- Fixes #17931\r\n- Fixes CAL-17931\r\n\r\nhttps://www.loom.com/share/3e537446117b4e43bec71deef583f178?sid=dd65fbba-4a75-42d8-a476-cd660bee2d01\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n- Are there environment variables that should be set? - N/A\r\n- What are the minimal test data to have? - N/A\r\n- What is expected (happy path) to have (input and output)? - Successful API call to /api/social/og/image\r\n- Any other important info that could help to test that PR - N/A\r\n\r\n/claim #17931\r\n",
                 "raised_by": "mehul-m-prajapati",
                 "state": "open",
-                "created_at": "2024-12-02T03:30:46Z",
+                "created_at": "2024-11-29T12:00:00Z",
                 "closed_at": null,
                 "merged_at": null
             },
             {
-                "title": "fix: Properly encoded metadata OpenGraph image parameters",
-                "body": "## What does this PR do?\r\n\r\nIn the metadata, the OpenGraph image attribute is malformed due to its parameters not being completed encoded, leading to an incorrect API call to the opengraph image end point (i.e /api/social/og/image?type=generic&title=a+title&description=a+desc)\r\n\r\n- Properly encoded OpenGraph image parameters\r\n- Fixes #17931\r\n- Fixes CAL-4823\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n- Loom Video with fix: https://www.loom.com/share/4f89328dd04b4871bb0f91d5d4905c1c?sid=559512f8-724d-40bd-ac6b-64bb513b0714\r\n- Loom Video without fix (URL params are not encoded): https://www.loom.com/share/a86bdadc1c6f4e448e9824a8bd5b9180 \r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n\r\n- Before changes, get the metadata's og-image attribute and try to access it on the browser.\r\n- View logs and observe API error for the /api/social/og/image endpoint\r\n- Add changes in and repeat steps to see fixes\r\n\r\n<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration. Write details that help to start the tests -->\r\n\r\n- Are there environment variables that should be set? \r\n  - N/A\r\n- What are the minimal test data to have?\r\n  - N/A\r\n- What is expected (happy path) to have (input and output)?\r\n  - No malformed api call to /api/social/og/image\r\n- Any other important info that could help to test that PR\r\n  - N/A \r\n\r\n/claim #17931\r\n",
-                "raised_by": "itsalam",
+                "title": "add comments and ignore bounced messages",
+                "body": null,
+                "raised_by": "cctdaniel",
                 "state": "open",
-                "created_at": "2024-12-01T22:24:41Z",
+                "created_at": "2024-11-28T06:02:48Z",
                 "closed_at": null,
                 "merged_at": null
             },
             {
-                "title": "feat: add meeting link in workflow reminder template",
-                "body": "## What does this PR do?\r\n\r\n<!-- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->\r\n\r\nIt includes meeting link in the default reminder template for email and sms reminder workflows.\r\n\r\n- Fixes #17922 (GitHub issue number)\r\n- Fixes CAL-XXXX (Linear issue number - should be visible at the bottom of the GitHub issue description)\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [ ] I confirm automated tests are in place that prove my fix is effective or that my feature works.",
-                "raised_by": "kart1ka",
+                "title": "feat(lazer): add fees to solana contract",
+                "body": "The user will now call our contract so that we can withdraw fees to the treasury account.\r\n\r\nNot sure about the migration path for devnet/testnet. We can redeploy the program itself but the storage account also needs to be migrated somehow.",
+                "raised_by": "Riateche",
                 "state": "open",
-                "created_at": "2024-12-01T20:51:43Z",
+                "created_at": "2024-11-25T15:50:21Z",
                 "closed_at": null,
                 "merged_at": null
             },
             {
-                "title": "chore: fixed colored event margin",
-                "body": "![CleanShot 2024-12-01 at 19 19 27@2x](https://github.com/user-attachments/assets/16e0cde6-1411-46b4-a6d3-b4165dc8d5ea)\r\n",
-                "raised_by": "PeerRich",
+                "title": "feat(argus): add argus",
+                "body": null,
+                "raised_by": "cctdaniel",
                 "state": "open",
-                "created_at": "2024-12-01T19:19:52Z",
+                "created_at": "2024-11-15T06:44:36Z",
                 "closed_at": null,
                 "merged_at": null
             }
@@ -155,6 +155,6 @@
             "zod"
         ],
         "commit_frequency": 1.0,
-        "tech_score": 74
+        "tech_score": 53
     }
 }

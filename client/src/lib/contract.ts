@@ -1,17 +1,23 @@
-import { SuiClient } from "@mysten/sui/client";
-import { getFullnodeUrl } from "@mysten/sui/client";
+import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
 import { Transaction } from "@mysten/sui/transactions";
+import { Ed25519Keypair } from "@mysten/sui/keypairs/ed25519";
+import { decodeSuiPrivateKey } from "@mysten/sui/cryptography";
 
 // Initialize Sui Client
 const client = new SuiClient({ url: getFullnodeUrl("testnet") });
-
-// Interface for NFT data
 
 // Helper Functions
 export class NFTService {
   private packageId =
     "0x61fd25749addae3a1e0bb4ad19724db3c4944f8c8a1c4ac96e46c59f8b90a662"; // Replace with your deployed package ID
   private moduleId = "test_nft";
+  private keypair: Ed25519Keypair;
+
+  constructor(privateKey: string) {
+    this.keypair = Ed25519Keypair.fromSecretKey(
+      decodeSuiPrivateKey(privateKey).secretKey
+    );
+  }
 
   // Fetch NFTs by owner
   async getNFTsByOwner(ownerAddress: string) {
@@ -34,7 +40,6 @@ export class NFTService {
 
   // Mint new NFT
   async mintNFT(
-    signer: Signer,
     title: string,
     description: string,
     stats: string,
@@ -63,8 +68,9 @@ export class NFTService {
         ],
       });
 
-      const result = await signer.signAndExecuteTransactionBlock({
-        transactionBlock: tx,
+      const result = await client.signAndExecuteTransaction({
+        transaction: tx,
+        signer: this.keypair,
       });
 
       return result;
@@ -75,11 +81,7 @@ export class NFTService {
   }
 
   // Update NFT attributes
-  async updateNFTDescription(
-    // signer: Signer,
-    nftId: string,
-    newDescription: string
-  ) {
+  async updateNFTDescription(nftId: string, newDescription: string) {
     try {
       const tx = new Transaction();
 
@@ -88,8 +90,9 @@ export class NFTService {
         arguments: [tx.object(nftId), tx.pure.string(newDescription)],
       });
 
-      return await signer.signAndExecuteTransactionBlock({
-        transactionBlock: tx,
+      return await client.signAndExecuteTransaction({
+        transaction: tx,
+        signer: this.keypair,
       });
     } catch (error) {
       console.error("Error updating NFT:", error);

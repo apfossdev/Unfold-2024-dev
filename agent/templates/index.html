@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Analyzer</title>
+</head>
+<body>
+    <h1>Profile Analyzer</h1>
+    <form id="analyze-form">
+        <label for="twitter_link">Twitter Link:</label>
+        <input type="text" id="twitter_link" name="twitter_link" required><br><br>
+        <label for="github_link">GitHub Link:</label>
+        <input type="text" id="github_link" name="github_link" required><br><br>
+        <button type="submit">Analyze</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('analyze-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const twitterLink = document.getElementById('twitter_link').value;
+            const githubLink = document.getElementById('github_link').value;
+
+            fetch('/analyze', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ twitter_link: twitterLink, github_link: githubLink })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('result').innerText = data.error;
+                } else {
+                    document.getElementById('result').innerText = `${data}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

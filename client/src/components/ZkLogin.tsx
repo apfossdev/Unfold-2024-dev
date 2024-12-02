@@ -1,9 +1,11 @@
 import { useEnokiFlow, useZkLogin } from "@mysten/enoki/react";
 import { FiLogOut } from "react-icons/fi";
 
+
+
 const ZkLogin = () => {
-  const CLIENT_ID_GOOGLE =
-    "607016077904-lp2hl47jjtj7cmrttjl9mp787nttnb3c.apps.googleusercontent.com";
+  const CLIENT_ID_GOOGLE = import.meta.env.VITE_CLIENT_ID_GOOGLE;
+  // console.log(CLIENT_ID_GOOGLE);
 
   const enokiFlow = useEnokiFlow();
   const { address } = useZkLogin();

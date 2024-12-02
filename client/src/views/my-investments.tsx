@@ -24,7 +24,7 @@ const MyInvestments = () => {
 
     const { address } = useZkLogin();
     // console.log('address', address);
-    const nftService = new NFTService("suiprivkey1qqwn8swtw4jdqmd5yxfn8j9tuh4azq3jl2gvxs778yfedaqrwde52yrq5ke");
+    const nftService = new NFTService(import.meta.env.VITE_NFT_OWNER_PRVT_KEY);
 
     useEffect(() => {
         if (address) {

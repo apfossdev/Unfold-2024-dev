@@ -1,14 +1,14 @@
 {
     "social_metrics": {
-        "username": "jeyasuryaur",
+        "username": "ChirpDeWi",
         "twitter_metrics": {
-            "avg_likes": 10.4,
-            "avg_reposts": 3.8,
-            "avg_replies": 0.6,
-            "avg_bookmarks": 0.4,
-            "avg_views": 890.6
+            "avg_likes": 254.6,
+            "avg_reposts": 100.8,
+            "avg_replies": 41.6,
+            "avg_bookmarks": 15.4,
+            "avg_views": 42680.0
         },
-        "social_score": 39.0
+        "social_score": 100
     },
     "tech_metrics": {
         "owner": {
@@ -19,11 +19,11 @@
         },
         "repo": {
             "name": "cal.com",
-            "watchers": 32645,
+            "watchers": 32646,
             "forks": 8100,
-            "open_issues": 947,
+            "open_issues": 948,
             "total_commits": 11319,
-            "total_pull_requests": 150
+            "total_pull_requests": 151
         },
         "commits": [
             {
@@ -54,7 +54,15 @@
         ],
         "issues": [
             {
-                "title": "fix: Use the Direct API URL in the og:image Meta Tag",
+                "title": "feat: Add OAuth support for closecom app linking",
+                "body": "## What does this PR do?\r\n\r\nAdd OAuth support for closecom app linking\r\n\r\n- Fixes #12228 \r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n\r\n- Create an account in [Close](https://www.close.com/)\r\n- Create an OAuth app \r\n- Make note of the `client_id` and `client_secret` and add those as environment variables in `.env`\r\n- Install the app\r\n",
+                "raised_by": "asadath1395",
+                "state": "open",
+                "created_at": "2024-12-02T06:58:36Z",
+                "closed_at": null
+            },
+            {
+                "title": "fix: metadata and broken og image ",
                 "body": "## What does this PR do?\r\n- The OpenGraph image attribute in the metadata is malformed due to improperly encoded parameters, resulting in an incorrect API call to the OpenGraph image endpoint (i.e., /api/social/og/image?type=generic&title=a+title&description=a+desc).\r\n-  The issue arises because Next.js's image optimization expects the url parameter to be a publicly accessible static image or a URL that returns an image directly. Since the /api/social/og/image endpoint is dynamically generating the image, Next.js can't optimize the image using its /_next/image system, and that's why we are getting a 404.\r\n- This PR fixes API URL in the og:image Meta Tag\r\n\r\n\r\n- Fixes #17931\r\n- Fixes CAL-17931\r\n\r\nhttps://www.loom.com/share/3e537446117b4e43bec71deef583f178?sid=dd65fbba-4a75-42d8-a476-cd660bee2d01\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n- Are there environment variables that should be set? - N/A\r\n- What are the minimal test data to have? - N/A\r\n- What is expected (happy path) to have (input and output)? - Successful API call to /api/social/og/image\r\n- Any other important info that could help to test that PR - N/A\r\n\r\n/claim #17931\r\n",
                 "raised_by": "mehul-m-prajapati",
                 "state": "open",
@@ -83,20 +91,21 @@
                 "raised_by": "PeerRich",
                 "state": "open",
                 "created_at": "2024-12-01T19:19:52Z",
-                "closed_at": null
-            },
-            {
-                "title": "[CAL-4823] metadata and og image is broken",
-                "body": "for team events:\r\n\r\nhttps://www.opengraph.xyz/url/https%3A%2F%2Fi.cal.com%2Fsales%2Fexploration%3Fmonth%3D2024-12%26date%3D2024-12-02\r\n\r\nbroken og image URL: https://cal.com/_next/image?w=1200&q=100&url=%2Fapi%2Fsocial%2Fog%2Fimage?type=meeting&title=&meetingProfileName=\r\n\r\n![image](https://github.com/user-attachments/assets/742b7747-e86a-42ca-93be-f3be6ee36f16)\r\n\r\n--\r\n\r\nfor personal events:\r\n\r\nog image for [i.cal.com/peer](http://i.cal.com/peer) since recently is broken too:\r\n\r\nhttps://cal.com/_next/image?w=1200&q=100&url=%2Fapi%2Fsocial%2Fog%2Fimage?type=meeting&title=Meeting&meetingProfileName=Peer%20Richelsen&meetingImage=https%3A%2F%2Fcal.com%2Fapi%2Favatar%2Fc0e68239-b19e-4d30-b4f8-cf0b4b4cf457.png&names=Peer%20Richelsen&usernames=peer\r\n\r\nsee: \r\nhttps://www.opengraph.xyz/url/https%3A%2F%2Fi.cal.com%2Fpeer\n\n<sub>[CAL-4823](https://linear.app/calcom/issue/CAL-4823/metadata-and-og-image-is-broken)</sub>",
-                "raised_by": "PeerRich",
-                "state": "open",
-                "created_at": "2024-12-01T18:14:39Z",
                 "closed_at": null
             }
         ],
         "pull_requests": [
             {
-                "title": "fix: Use the Direct API URL in the og:image Meta Tag",
+                "title": "feat: Add OAuth support for closecom app linking",
+                "body": "## What does this PR do?\r\n\r\nAdd OAuth support for closecom app linking\r\n\r\n- Fixes #12228 \r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n\r\n- Create an account in [Close](https://www.close.com/)\r\n- Create an OAuth app \r\n- Make note of the `client_id` and `client_secret` and add those as environment variables in `.env`\r\n- Install the app\r\n",
+                "raised_by": "asadath1395",
+                "state": "open",
+                "created_at": "2024-12-02T06:58:36Z",
+                "closed_at": null,
+                "merged_at": null
+            },
+            {
+                "title": "fix: metadata and broken og image ",
                 "body": "## What does this PR do?\r\n- The OpenGraph image attribute in the metadata is malformed due to improperly encoded parameters, resulting in an incorrect API call to the OpenGraph image endpoint (i.e., /api/social/og/image?type=generic&title=a+title&description=a+desc).\r\n-  The issue arises because Next.js's image optimization expects the url parameter to be a publicly accessible static image or a URL that returns an image directly. Since the /api/social/og/image endpoint is dynamically generating the image, Next.js can't optimize the image using its /_next/image system, and that's why we are getting a 404.\r\n- This PR fixes API URL in the og:image Meta Tag\r\n\r\n\r\n- Fixes #17931\r\n- Fixes CAL-17931\r\n\r\nhttps://www.loom.com/share/3e537446117b4e43bec71deef583f178?sid=dd65fbba-4a75-42d8-a476-cd660bee2d01\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n- Are there environment variables that should be set? - N/A\r\n- What are the minimal test data to have? - N/A\r\n- What is expected (happy path) to have (input and output)? - Successful API call to /api/social/og/image\r\n- Any other important info that could help to test that PR - N/A\r\n\r\n/claim #17931\r\n",
                 "raised_by": "mehul-m-prajapati",
                 "state": "open",
@@ -130,18 +139,21 @@
                 "created_at": "2024-12-01T19:19:52Z",
                 "closed_at": null,
                 "merged_at": null
-            },
-            {
-                "title": "fix: navigation items weird behavior",
-                "body": "## What does this PR do?\r\n\r\n<!-- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->\r\n\r\n- Fixes #XXXX (GitHub issue number)\r\n- Fixes CAL-XXXX (Linear issue number - should be visible at the bottom of the GitHub issue description)\r\n\r\nMore Context:- https://app.campsite.com/cal/projects/kqwctmi039sb\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] N/A-I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] N/A-I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n\r\n<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration. Write details that help to start the tests -->\r\n\r\n- Are there environment variables that should be set?\r\n- What are the minimal test data to have?\r\n- What is expected (happy path) to have (input and output)?\r\n- Any other important info that could help to test that PR\r\n\r\n## Checklist\r\n\r\n<!-- Remove bullet points below that don't apply to you -->\r\n\r\n- I haven't read the [contributing guide](https://github.com/calcom/cal.com/blob/main/CONTRIBUTING.md)\r\n- My code doesn't follow the style guidelines of this project\r\n- I haven't commented my code, particularly in hard-to-understand areas\r\n- I haven't checked if my changes generate no new warnings\r\n",
-                "raised_by": "anikdhabal",
-                "state": "open",
-                "created_at": "2024-12-01T11:34:51Z",
-                "closed_at": null,
-                "merged_at": null
             }
         ],
-        "topics": [],
+        "topics": [
+            "open-source",
+            "typescript",
+            "nextjs",
+            "next-auth",
+            "postgresql",
+            "prisma",
+            "t3-stack",
+            "tailwindcss",
+            "trpc",
+            "turborepo",
+            "zod"
+        ],
         "commit_frequency": 1.0,
         "tech_score": 74
     }

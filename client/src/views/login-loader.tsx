@@ -6,7 +6,7 @@ const LoginLoader = () => {
 
   useEffect(() => {
     if (handled) {
-      window.location.href = "/dashboard";
+      window.location.href = "/my-investments";
     }
   }, [handled]);
 

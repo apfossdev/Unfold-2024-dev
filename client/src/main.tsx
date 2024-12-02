@@ -21,7 +21,7 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <EnokiFlowProvider apiKey="enoki_public_523564342d1a542e837e12606a9385d7">
+      <EnokiFlowProvider apiKey={import.meta.env.VITE_ENOKI_API}>
         <SuiClientProvider networks={networkConfig} defaultNetwork="testnet">
           <WalletProvider>
             <BrowserRouter>

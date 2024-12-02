@@ -206,7 +206,7 @@ export default function DashboardAnalytics() {
     const fetchContractMetrics = async () => {
       try {
         const response = await axios.get(
-          `/blockberry/sui/v1/accounts/stats/${'0x61953ea72709eed72f4441dd944eec49a11b4acabfc8e04015e89c63be81b6ab'}`,
+          `/blockberry/sui/v1/accounts/stats/${address}`,
           {
             headers: {
               'accept': '*/*',

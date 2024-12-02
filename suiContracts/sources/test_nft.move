@@ -1,4 +1,3 @@
-#[allow(duplicate_alias)]
 module test_nft::professional_nft {
     use sui::object::{Self, UID};
     use sui::tx_context::{Self, TxContext};
@@ -14,8 +13,8 @@ module test_nft::professional_nft {
         github_url: String,
         twitter_url: String,
         contract_address: address,
-        tech_score: u8,
-        social_score: u8    
+        tech_score: u64,
+        social_score: u64    
     }
 
     // Admin capability for managing the NFT collection
@@ -49,14 +48,11 @@ module test_nft::professional_nft {
         github_url: String, 
         twitter_url: String,
         contract_address: address,
-        tech_score: u8,
-        social_score: u8,
+        tech_score: u64,
+        social_score: u64,
         recipient: address,
         ctx: &mut TxContext
     ) {
-        // Validate AI score (assuming 0-100 scale)
-        assert!(tech_score <= 100, 0);
-        assert!(social_score <= 100, 0);
 
         // Create the NFT
         let nft = ProfessionalNFT {
@@ -75,29 +71,20 @@ module test_nft::professional_nft {
         transfer::transfer(nft, recipient);
     }
 
-    // Update NFT description
-    public fun update_title(nft: &mut ProfessionalNFT, title: String) {
-        nft.title = title;
-    }
-
-    public fun update_description(nft: &mut ProfessionalNFT, new_description: String) {
-        nft.description = new_description;
-    }
-
     // Update stats
     public fun update_stats(nft: &mut ProfessionalNFT, new_stats: String) {
         nft.stats = new_stats;
     }
 
     // Update AI score
-    public fun update_tech_score(nft: &mut ProfessionalNFT, new_tech_score: u8) {
+    public fun update_tech_score(nft: &mut ProfessionalNFT, new_tech_score: u64) {
         // Validate AI score
         assert!(new_tech_score <= 100, 0);
         nft.tech_score = new_tech_score;
     }
 
     // Update AI score
-    public fun update_social_score(nft: &mut ProfessionalNFT, new_social_score: u8) {
+    public fun update_social_score(nft: &mut ProfessionalNFT, new_social_score: u64) {
         // Validate AI score
         assert!(new_social_score <= 100, 0);
         nft.social_score = new_social_score;
@@ -128,27 +115,27 @@ module test_nft::professional_nft {
         nft.contract_address
     }
 
-    public fun get_tech_score(nft: &ProfessionalNFT): u8 {
+    public fun get_tech_score(nft: &ProfessionalNFT): u64 {
         nft.tech_score
     }
 
-    public fun get_social_score(nft: &ProfessionalNFT): u8 {
+    public fun get_social_score(nft: &ProfessionalNFT): u64 {
         nft.social_score
     }
 
     // Function to burn (destroy) the NFT
-    public fun burn(nft: ProfessionalNFT) {
-        let ProfessionalNFT { 
-            id,
-            title: _,
-            description: _, 
-            stats: _, 
-            github_url: _, 
-            twitter_url: _,
-            contract_address: _,
-            tech_score: _, 
-            social_score: _ 
-        } = nft;
-        object::delete(id);
-    }
+    // public fun burn(nft: ProfessionalNFT) {
+    //     let ProfessionalNFT { 
+    //         id,
+    //         title: _,
+    //         description: _, 
+    //         stats: _, 
+    //         github_url: _, 
+    //         twitter_url: _,
+    //         contract_address: _,
+    //         tech_score: _, 
+    //         social_score: _ 
+    //     } = nft;
+    //     object::delete(id);
+    // }
 }

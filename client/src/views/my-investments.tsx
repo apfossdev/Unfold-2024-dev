@@ -21,7 +21,8 @@ const MyInvestments = () => {
     const [loading, setLoading] = useState<boolean>(false);
 
     const { address } = useZkLogin();
-    const nftService = new NFTService();
+    // console.log('address', address);
+    const nftService = new NFTService("suiprivkey1qqwn8swtw4jdqmd5yxfn8j9tuh4azq3jl2gvxs778yfedaqrwde52yrq5ke");
 
     useEffect(() => {
         if (address) {
@@ -47,29 +48,46 @@ const MyInvestments = () => {
         }
         setLoading(true);
         try {
-            // Send data to AI agent and get the stats, tech score, and social score
-            const response = await axios.post('/agent/analyze', {
-                twitter_link: twitterUrl,
-                github_link: githubUrl
-            });
 
-            const { social_metrics, tech_metrics } = response.data;
-            const stats = JSON.stringify(response.data);
-            const techScore = tech_metrics.tech_score;
-            const socialScore = social_metrics.social_score;
+            if (!address) {
+                alert('Please connect wallet to create a new project');
+                setLoading(false)
+                return;
+            }
+            // Send data to AI agent and get the stats, tech score, and social score
+            // const response = await axios.post('/agent/analyze', {
+            //     twitter_link: twitterUrl,
+            //     github_link: githubUrl
+            // });
+
+            // const { social_metrics, tech_metrics } = response.data;
+            // const stats = JSON.stringify(response.data);
+            // const techScore = tech_metrics.tech_score;
+            // const socialScore = social_metrics.social_score;
 
             // Mint the NFT with the provided data
+            // await nftService.mintNFT(
+            //     projectName,
+            //     projectName, // description
+            //     stats,
+            //     githubUrl,
+            //     twitterUrl,
+            //     contractAddress,
+            //     techScore,
+            //     socialScore,
+            //     address // recipient
+            // );
+
             await nftService.mintNFT(
-                address, // signer
-                projectName,
-                projectName, // description
-                stats,
-                githubUrl,
-                twitterUrl,
-                contractAddress,
-                techScore,
-                socialScore,
-                address // recipient
+                "syuiuii",
+                "subbaahefi", // description
+                "{urwhewi}",
+                "github.com",
+                "twitter.com",
+                "ewkjewr",
+                90,
+                67,
+                "wjhgkrew" // recipient
             );
 
             // Fetch the updated list of NFTs

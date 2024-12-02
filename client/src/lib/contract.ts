@@ -53,20 +53,38 @@ export class NFTService {
     try {
       const tx = new Transaction();
 
+      // tx.moveCall({
+      //   target: `${this.packageId}::${this.moduleId}::mint_professional_nft`,
+      //   arguments: [
+      //     tx.pure.string(title),
+      //     tx.pure.string(description),
+      //     tx.pure.string(stats),
+      //     tx.pure.string(githubUrl),
+      //     tx.pure.string(twitterUrl),
+      //     tx.pure.address("0xd397d962e04eab3619611645a622acd9ac08d49684ec1b056ac9b8060cdadfdb"),
+      //     tx.pure.u8(techScore),
+      //     tx.pure.u8(socialScore),
+      //     tx.pure.address("0xd397d962e04eab3619611645a622acd9ac08d49684ec1b056ac9b8060cdadfdb"),
+      //   ],
+      // });
+
       tx.moveCall({
         target: `${this.packageId}::${this.moduleId}::mint_professional_nft`,
         arguments: [
-          tx.pure.string(title),
-          tx.pure.string(description),
-          tx.pure.string(stats),
-          tx.pure.string(githubUrl),
-          tx.pure.string(twitterUrl),
-          tx.pure.address(contractAddress),
-          tx.pure.u8(techScore),
-          tx.pure.u8(socialScore),
-          tx.pure.address(recipient),
+            tx.pure.string("Sample Title"),
+            tx.pure.string("Sample Description"),
+            tx.pure.string("Sample Stats"),
+            tx.pure.string("https://github.com/sample"),
+            tx.pure.string("https://twitter.com/sample"),
+            tx.pure.address("0x2a212de6a9dfa3a69e22387acfbafbb1a9e591bd9d636e7895dcfc8de05f331"),
+            tx.pure.u8(85),  // Example tech score
+            tx.pure.u8(90),  // Example social score
+            tx.pure.address("0x3b212de6a9dfa3a69e22387acfbafbb1a9e591bd9d636e7895dcfc8de05f332"),
         ],
-      });
+    });
+
+      // Set a budget manually
+      tx.setGasBudget(1000000);
 
       const result = await client.signAndExecuteTransaction({
         transaction: tx,

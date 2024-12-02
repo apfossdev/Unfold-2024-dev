@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button.tsx";
 import {NavigateFunction, useNavigate} from "react-router-dom";
 import {ROUTES} from "@/constants/routes.ts";
 import {cn} from "@/lib/utils.ts";
+import ZkLogin from "../ZkLogin";
 
 const DashboardNav = ({parent}: { parent: string }) => {
     const navigate: NavigateFunction = useNavigate();
@@ -15,9 +16,10 @@ const DashboardNav = ({parent}: { parent: string }) => {
                         onClick={() => navigate(ROUTES.dashboard)}>Dashboard</Button>
                 <Button variant={'link'} className={cn((parent && parent === "myInvestments") && "underline")}
                         onClick={() => navigate(ROUTES.myInvestments)}>My Investments</Button>
-                <Button variant={'secondary'}>
+                {/* <Button variant={'secondary'}>
                     Logout
-                </Button>
+                </Button> */}
+                <ZkLogin />
             </div>
         </div>
     );

@@ -11,6 +11,9 @@ import {
   Users,
   MessageSquare,
   Heart,
+  Coins,
+  Layers,
+  Box,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
@@ -33,6 +36,8 @@ import {
 } from "recharts";
 import { ChartContainer, ChartTooltip } from "@/components/ui/chart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import axios from "axios";
+import { useZkLogin } from "@mysten/enoki/react";
 
 const githubData = [
   { date: "2023-01", commits: 30, issues: 5, pulls: 8 },
@@ -153,7 +158,8 @@ function ReportCard({ title, data }: { title: string; data: any }) {
   );
 }
 
-export default function Dashboard() {
+export default function DashboardAnalytics() {
+  const {address} = useZkLogin();
   const [activeTab, setActiveTab] = useState("github");
   const [githubReport, setGithubReport] = useState({
     totalCommits: 0,
@@ -166,6 +172,14 @@ export default function Dashboard() {
     followers: 0,
     likes: 0,
     retweets: 0,
+  });
+  const [contractMetrics, setContractMetrics] = useState({
+    coinsCount: 0,
+    nftsCount: 0,
+    othersCount: 0,
+    collectionsCount: 0,
+    kiosksCount: 0,
+    balance: 0,
   });
 
   useEffect(() => {
@@ -187,6 +201,26 @@ export default function Dashboard() {
         retweets: 145,
       });
     }, 1500);
+
+    // Fetch contract metrics
+    const fetchContractMetrics = async () => {
+      try {
+        const response = await axios.get(
+          `/blockberry/sui/v1/accounts/stats/${address}`,
+          {
+            headers: {
+              'accept': '*/*',
+              'x-api-key': import.meta.env.VITE_BLOCKBERRY_API,
+            },
+          }
+        );
+        setContractMetrics(response.data);
+      } catch (error) {
+        console.error("Error fetching contract metrics:", error);
+      }
+    };
+
+    fetchContractMetrics();
   }, []);
 
   return (
@@ -223,6 +257,7 @@ export default function Dashboard() {
           <TabsList>
             <TabsTrigger value="github">GitHub</TabsTrigger>
             <TabsTrigger value="twitter">Twitter</TabsTrigger>
+            <TabsTrigger value="contract">Contract</TabsTrigger>
           </TabsList>
           <TabsContent value="github" className="space-y-4">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -246,6 +281,13 @@ export default function Dashboard() {
                 />
               </div>
               <ReportCard title="Twitter Summary" data={twitterReport} />
+            </div>
+          </TabsContent>
+          <TabsContent value="contract" className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div className="lg:col-span-2">
+                <ReportCard title="Contract Metrics" data={contractMetrics} />
+              </div>
             </div>
           </TabsContent>
         </Tabs>

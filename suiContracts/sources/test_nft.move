@@ -8,7 +8,6 @@ module test_nft::professional_nft {
     public struct ProfessionalNFT has key, store {
         id: UID,
         title : String,
-        description: String,
         stats: String,
         github_url: String,
         twitter_url: String,
@@ -43,7 +42,6 @@ module test_nft::professional_nft {
     // Mint a new Professional NFT
     public fun mint_professional_nft(
         title: String,
-        description: String, 
         stats: String, 
         github_url: String, 
         twitter_url: String,
@@ -58,7 +56,6 @@ module test_nft::professional_nft {
         let nft = ProfessionalNFT {
             id: object::new(ctx),
             title,
-            description,
             stats,
             github_url,
             twitter_url,
@@ -94,11 +91,6 @@ module test_nft::professional_nft {
         nft.title
     }
 
-    // Accessor functions
-    public fun get_description(nft: &ProfessionalNFT): String {
-        nft.description
-    }
-
     public fun get_stats(nft: &ProfessionalNFT): String {
         nft.stats
     }
@@ -128,7 +120,6 @@ module test_nft::professional_nft {
     //     let ProfessionalNFT { 
     //         id,
     //         title: _,
-    //         description: _, 
     //         stats: _, 
     //         github_url: _, 
     //         twitter_url: _,

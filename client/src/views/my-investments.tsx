@@ -6,7 +6,6 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Button } from "@/components/ui/button.tsx";
 import { Label } from "@/components/ui/label.tsx";
 import { Input } from "@/components/ui/input";
-import axios from 'axios';
 import { useZkLogin } from "@mysten/enoki/react";
 import { NFTService } from "@/lib/contract.ts"; // Adjust the import path as needed
 
@@ -80,7 +79,6 @@ const MyInvestments = () => {
 
             await nftService.mintNFT(
                 "syuiuii",
-                "subbaahefi", // description
                 "{urwhewi}",
                 "github.com",
                 "twitter.com",

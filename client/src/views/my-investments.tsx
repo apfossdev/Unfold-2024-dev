@@ -1,6 +1,6 @@
 import DashboardNav from "@/components/internal/dashboard-nav.tsx";
 import { Card, CardContent } from "@/components/ui/card.tsx";
-import { Eye, Github, LucideTwitter, Plus, Twitter, View } from "lucide-react";
+import {Eye, Github, Loader, LucideTwitter, Plus, Twitter, View} from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog.tsx";
 import { Button } from "@/components/ui/button.tsx";
@@ -18,6 +18,7 @@ const MyInvestments = () => {
     const [githubUrl, setGithubUrl] = useState<string>('');
     const [contractAddress, setContractAddress] = useState<string>('');
     const [nfts, setNfts] = useState<any[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const { address } = useZkLogin();
     const nftService = new NFTService();
@@ -44,7 +45,7 @@ const MyInvestments = () => {
             alert('All fields are required');
             return;
         }
-
+        setLoading(true);
         try {
             // Send data to AI agent and get the stats, tech score, and social score
             const response = await axios.post('/agent/analyze', {
@@ -73,9 +74,11 @@ const MyInvestments = () => {
 
             // Fetch the updated list of NFTs
             fetchNFTs();
+            setLoading(false)
             setAddNewProjectModalOpen(false);
         } catch (error) {
             console.error('Error submitting the form', error);
+            setLoading(false)
         }
     };
 
@@ -165,8 +168,8 @@ const MyInvestments = () => {
                                         onChange={(e) => setContractAddress(e.target.value)} />
                                 </div>
                                 <div className={'flex justify-end'}>
-                                    <Button type={'submit'}>
-                                        Submit
+                                    <Button type={'submit'} disabled={loading}>
+                                        Submit {loading && <Loader className={'animate-spin'} />}
                                     </Button>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@ const DashboardNav = ({parent}: { parent: string }) => {
     const navigate: NavigateFunction = useNavigate();
     return (
         <div className={'flex items-center justify-between'}>
-            <Logo/>
+            <Logo className={'h-16 w-16'}/>
             <div className={'flex items-center gap-5'}>
                 <Button variant={'link'} onClick={() => navigate(ROUTES.home)}>Home</Button>
                 <Button variant={'link'} className={cn((parent && parent === "dashboard") && "underline")}

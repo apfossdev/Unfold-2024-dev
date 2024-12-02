@@ -1,160 +1,140 @@
 {
     "social_metrics": {
-        "username": "jeyasuryaur",
-        "twitter_metrics": {
-            "avg_likes": 10.4,
-            "avg_reposts": 3.8,
-            "avg_replies": 0.6,
-            "avg_bookmarks": 0.4,
-            "avg_views": 890.6
-        },
-        "social_score": 39.0
+        "error": "No tweets found for the user"
     },
     "tech_metrics": {
         "owner": {
-            "name": "Cal.com, Inc.",
-            "username": "calcom",
-            "followers": 1228,
+            "name": "Pyth Network",
+            "username": "pyth-network",
+            "followers": 586,
             "following": 0
         },
         "repo": {
-            "name": "cal.com",
-            "watchers": 32645,
-            "forks": 8099,
-            "open_issues": 946,
-            "total_commits": 11319,
-            "total_pull_requests": 149
+            "name": "pyth-crosschain",
+            "watchers": 154,
+            "forks": 209,
+            "open_issues": 35,
+            "total_commits": 3740,
+            "total_pull_requests": 20
         },
         "commits": [
             {
-                "message": "feat: show attributes in profile (#17920)",
+                "message": "Merge pull request #2154 from cprussin/finish-price-feeds-index\n\nfeat(insights): finish price feeds index",
                 "committer": "GitHub",
-                "committed_at": "2024-11-30T17:23:05Z"
+                "committed_at": "2024-12-01T01:07:29Z"
             },
             {
-                "message": "fix : Issue on docs (#17895)",
-                "committer": "GitHub",
-                "committed_at": "2024-11-29T19:50:57Z"
+                "message": "feat(insights): finish price feeds index",
+                "committer": "Connor Prussin",
+                "committed_at": "2024-11-30T21:16:33Z"
             },
             {
-                "message": "fix: Added proper updates/interactivity on the \"Getting started\" app integ\u2026 (#17903)\n\n* Added proper updates/interactivity on the \"Getting started\" app integrations.\r\n\r\n- InstallAppButtonWithoutPlanCheck properly vends the mutation data in the render's props\r\n- Fixed the improper props wiring in the AppConnectionItem\r\n- Added a loading state for reactivity\r\n\r\n* -Added toaster for error/success confirmation",
+                "message": "chore(networks)-add-new-networks (#2153)",
                 "committer": "GitHub",
-                "committed_at": "2024-11-29T19:14:01Z"
+                "committed_at": "2024-11-29T15:00:13Z"
             },
             {
-                "message": "build: Reduce bundle size from unnecessary bundeling react/jsx-runtime in embed-react package (#17790)\n\n* Update vite.config.js\n\n* linting fix\n\n---------\n\nCo-authored-by: Hariom <hariombalhara@gmail.com>",
+                "message": "Merge pull request #2150 from cprussin/update-tos\n\nchore(staking): update tos",
                 "committer": "GitHub",
-                "committed_at": "2024-11-29T16:49:16Z"
+                "committed_at": "2024-11-28T01:15:42Z"
             },
             {
-                "message": "fix: bulk attribute assignment (#17896)\n\nremove comment",
-                "committer": "GitHub",
-                "committed_at": "2024-11-29T10:00:20Z"
+                "message": "chore(staking): update tos",
+                "committer": "Connor Prussin",
+                "committed_at": "2024-11-28T00:59:16Z"
             }
         ],
         "issues": [
             {
-                "title": "fix: Properly encoded metadata OpenGraph image parameters",
-                "body": "## What does this PR do?\r\n\r\nIn the metadata, the OpenGraph image attribute is malformed due to its parameters not being completed encoded, leading to an incorrect API call to the opengraph image end point (i.e /api/social/og/image?type=generic&title=a+title&description=a+desc)\r\n\r\n- Properly encoded OpenGraph image parameters\r\n- Fixes #17931\r\n- Fixes CAL-4823\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n- Loom Video with fix: https://www.loom.com/share/4f89328dd04b4871bb0f91d5d4905c1c?sid=559512f8-724d-40bd-ac6b-64bb513b0714\r\n- Loom Video without fix (URL params are not encoded): https://www.loom.com/share/a86bdadc1c6f4e448e9824a8bd5b9180 \r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n\r\n- Before changes, get the metadata's og-image attribute and try to access it on the browser.\r\n- View logs and observe API error for the /api/social/og/image endpoint\r\n- Add changes in and repeat steps to see fixes\r\n\r\n<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration. Write details that help to start the tests -->\r\n\r\n- Are there environment variables that should be set? \r\n  - N/A\r\n- What are the minimal test data to have?\r\n  - N/A\r\n- What is expected (happy path) to have (input and output)?\r\n  - No malformed api call to /api/social/og/image\r\n- Any other important info that could help to test that PR\r\n  - N/A \r\n\r\n/claim #17931\r\n",
-                "raised_by": "itsalam",
+                "title": "Can upgrade sui dependency to framework/mainnet?",
+                "body": "Could you upgrade the sui package to the latest version? \r\n\r\nThe dependency of sui seems to be stuck at the version from nine months ago. \r\n\r\nThe old version is not friendly to the development of new projects.",
+                "raised_by": "lispking",
                 "state": "open",
-                "created_at": "2024-12-01T22:24:41Z",
+                "created_at": "2024-12-01T02:45:53Z",
                 "closed_at": null
             },
             {
-                "title": "feat: add meeting link in workflow reminder template",
-                "body": "## What does this PR do?\r\n\r\n<!-- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->\r\n\r\nIt includes meeting link in the default reminder template for email and sms reminder workflows.\r\n\r\n- Fixes #17922 (GitHub issue number)\r\n- Fixes CAL-XXXX (Linear issue number - should be visible at the bottom of the GitHub issue description)\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [ ] I confirm automated tests are in place that prove my fix is effective or that my feature works.",
-                "raised_by": "kart1ka",
+                "title": "feat(target_chains/aptos): update libs + toolchain to 4.5.0",
+                "body": null,
+                "raised_by": "ali-bahjati",
                 "state": "open",
-                "created_at": "2024-12-01T20:51:43Z",
+                "created_at": "2024-11-29T12:00:00Z",
                 "closed_at": null
             },
             {
-                "title": "chore: fixed colored event margin",
-                "body": "![CleanShot 2024-12-01 at 19 19 27@2x](https://github.com/user-attachments/assets/16e0cde6-1411-46b4-a6d3-b4165dc8d5ea)\r\n",
-                "raised_by": "PeerRich",
+                "title": "add comments and ignore bounced messages",
+                "body": null,
+                "raised_by": "cctdaniel",
                 "state": "open",
-                "created_at": "2024-12-01T19:19:52Z",
+                "created_at": "2024-11-28T06:02:48Z",
                 "closed_at": null
             },
             {
-                "title": "[CAL-4823] metadata and og image is broken",
-                "body": "for team events:\r\n\r\nhttps://www.opengraph.xyz/url/https%3A%2F%2Fi.cal.com%2Fsales%2Fexploration%3Fmonth%3D2024-12%26date%3D2024-12-02\r\n\r\nbroken og image URL: https://cal.com/_next/image?w=1200&q=100&url=%2Fapi%2Fsocial%2Fog%2Fimage?type=meeting&title=&meetingProfileName=\r\n\r\n![image](https://github.com/user-attachments/assets/742b7747-e86a-42ca-93be-f3be6ee36f16)\r\n\r\n--\r\n\r\nfor personal events:\r\n\r\nog image for [i.cal.com/peer](http://i.cal.com/peer) since recently is broken too:\r\n\r\nhttps://cal.com/_next/image?w=1200&q=100&url=%2Fapi%2Fsocial%2Fog%2Fimage?type=meeting&title=Meeting&meetingProfileName=Peer%20Richelsen&meetingImage=https%3A%2F%2Fcal.com%2Fapi%2Favatar%2Fc0e68239-b19e-4d30-b4f8-cf0b4b4cf457.png&names=Peer%20Richelsen&usernames=peer\r\n\r\nsee: \r\nhttps://www.opengraph.xyz/url/https%3A%2F%2Fi.cal.com%2Fpeer\n\n<sub>[CAL-4823](https://linear.app/calcom/issue/CAL-4823/metadata-and-og-image-is-broken)</sub>",
-                "raised_by": "PeerRich",
+                "title": "Transaction version (0) is not supported by the requesting client, set maxSupportedTransactionVersion",
+                "body": "This is probably due to old anchor dependency used by `@pythnetwork/pyth-solana-receiver`\r\n```\r\nnode_modules/@solana/web3.js/src/connection.ts:5069\r\n      throw new SolanaJSONRPCError(res.error, 'failed to get transaction');\r\n            ^\r\n\r\nSolanaJSONRPCError: failed to get transaction: Transaction version (0) is not supported by the requesting client. Please try the request again with the following configuration parameter: \"maxSupportedTransactionVersion\": 0\r\n    at Connection.getTransaction (node_modules/@solana/web3.js/src/connection.ts:5069:13)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\r\n    at AnchorProvider.sendAll (node_modules/@pythnetwork/pyth-solana-receiver/node_modules/@coral-xyz/anchor/src/provider.ts:256:28)\r\n    at <anonymous> (pythPush.ts:63:5) {\r\n  code: -32015,\r\n  data: undefined\r\n}\r\n\r\n```",
+                "raised_by": "kskalski",
                 "state": "open",
-                "created_at": "2024-12-01T18:14:39Z",
+                "created_at": "2024-11-27T09:38:46Z",
                 "closed_at": null
             },
             {
-                "title": "Unable to reset login password",
-                "body": "Found a bug? Please fill out the sections below. \ud83d\udc4d\r\n\r\n### Issue Summary\r\n\r\nLocally hosting my Calcom and I am having trouble logging back in after updating my stack in Portainer. I am trying to reset my password but I am not getting any email to reset my password.\r\n\r\n### Steps to Reproduce\r\n\r\n1. Went to the login screen\r\n2. Clicked on forgot\r\n3. Typed in my email\r\n4. No email for the password recover was received\r\n\r\nAny other relevant information. For example, why do you consider this a bug and what did you expect to happen instead?\r\n\r\n### Actual Results\r\n\r\n- No email in inbox or spam folder to reset Calcom login\r\n\r\n### Expected Results\r\n\r\n- Receive an email that would allow me to reset my login password\r\n\r\n### Technical details\r\n\r\nAttached log - could be a hostname issue?\r\n[_Calcom_logs.txt](https://github.com/user-attachments/files/17969653/_Calcom_logs.txt)\r\n\r\n### Evidence\r\n\r\n- Tested in my normal docker environment",
-                "raised_by": "pbmagnet4",
+                "title": "feat(lazer): add fees to solana contract",
+                "body": "The user will now call our contract so that we can withdraw fees to the treasury account.\r\n\r\nNot sure about the migration path for devnet/testnet. We can redeploy the program itself but the storage account also needs to be migrated somehow.",
+                "raised_by": "Riateche",
                 "state": "open",
-                "created_at": "2024-12-01T17:09:26Z",
+                "created_at": "2024-11-25T15:50:21Z",
                 "closed_at": null
             }
         ],
         "pull_requests": [
             {
-                "title": "fix: Properly encoded metadata OpenGraph image parameters",
-                "body": "## What does this PR do?\r\n\r\nIn the metadata, the OpenGraph image attribute is malformed due to its parameters not being completed encoded, leading to an incorrect API call to the opengraph image end point (i.e /api/social/og/image?type=generic&title=a+title&description=a+desc)\r\n\r\n- Properly encoded OpenGraph image parameters\r\n- Fixes #17931\r\n- Fixes CAL-4823\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n- Loom Video with fix: https://www.loom.com/share/4f89328dd04b4871bb0f91d5d4905c1c?sid=559512f8-724d-40bd-ac6b-64bb513b0714\r\n- Loom Video without fix (URL params are not encoded): https://www.loom.com/share/a86bdadc1c6f4e448e9824a8bd5b9180 \r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n\r\n- Before changes, get the metadata's og-image attribute and try to access it on the browser.\r\n- View logs and observe API error for the /api/social/og/image endpoint\r\n- Add changes in and repeat steps to see fixes\r\n\r\n<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration. Write details that help to start the tests -->\r\n\r\n- Are there environment variables that should be set? \r\n  - N/A\r\n- What are the minimal test data to have?\r\n  - N/A\r\n- What is expected (happy path) to have (input and output)?\r\n  - No malformed api call to /api/social/og/image\r\n- Any other important info that could help to test that PR\r\n  - N/A \r\n\r\n/claim #17931\r\n",
-                "raised_by": "itsalam",
+                "title": "feat(target_chains/aptos): update libs + toolchain to 4.5.0",
+                "body": null,
+                "raised_by": "ali-bahjati",
                 "state": "open",
-                "created_at": "2024-12-01T22:24:41Z",
+                "created_at": "2024-11-29T12:00:00Z",
                 "closed_at": null,
                 "merged_at": null
             },
             {
-                "title": "feat: add meeting link in workflow reminder template",
-                "body": "## What does this PR do?\r\n\r\n<!-- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->\r\n\r\nIt includes meeting link in the default reminder template for email and sms reminder workflows.\r\n\r\n- Fixes #17922 (GitHub issue number)\r\n- Fixes CAL-XXXX (Linear issue number - should be visible at the bottom of the GitHub issue description)\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [ ] I confirm automated tests are in place that prove my fix is effective or that my feature works.",
-                "raised_by": "kart1ka",
+                "title": "add comments and ignore bounced messages",
+                "body": null,
+                "raised_by": "cctdaniel",
                 "state": "open",
-                "created_at": "2024-12-01T20:51:43Z",
+                "created_at": "2024-11-28T06:02:48Z",
                 "closed_at": null,
                 "merged_at": null
             },
             {
-                "title": "chore: fixed colored event margin",
-                "body": "![CleanShot 2024-12-01 at 19 19 27@2x](https://github.com/user-attachments/assets/16e0cde6-1411-46b4-a6d3-b4165dc8d5ea)\r\n",
-                "raised_by": "PeerRich",
+                "title": "feat(lazer): add fees to solana contract",
+                "body": "The user will now call our contract so that we can withdraw fees to the treasury account.\r\n\r\nNot sure about the migration path for devnet/testnet. We can redeploy the program itself but the storage account also needs to be migrated somehow.",
+                "raised_by": "Riateche",
                 "state": "open",
-                "created_at": "2024-12-01T19:19:52Z",
+                "created_at": "2024-11-25T15:50:21Z",
                 "closed_at": null,
                 "merged_at": null
             },
             {
-                "title": "fix: navigation items weird behavior",
-                "body": "## What does this PR do?\r\n\r\n<!-- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->\r\n\r\n- Fixes #XXXX (GitHub issue number)\r\n- Fixes CAL-XXXX (Linear issue number - should be visible at the bottom of the GitHub issue description)\r\n\r\nMore Context:- https://app.campsite.com/cal/projects/kqwctmi039sb\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] N/A-I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [x] N/A-I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n## How should this be tested?\r\n\r\n<!-- Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration. Write details that help to start the tests -->\r\n\r\n- Are there environment variables that should be set?\r\n- What are the minimal test data to have?\r\n- What is expected (happy path) to have (input and output)?\r\n- Any other important info that could help to test that PR\r\n\r\n## Checklist\r\n\r\n<!-- Remove bullet points below that don't apply to you -->\r\n\r\n- I haven't read the [contributing guide](https://github.com/calcom/cal.com/blob/main/CONTRIBUTING.md)\r\n- My code doesn't follow the style guidelines of this project\r\n- I haven't commented my code, particularly in hard-to-understand areas\r\n- I haven't checked if my changes generate no new warnings\r\n",
-                "raised_by": "anikdhabal",
+                "title": "feat(argus): add argus",
+                "body": null,
+                "raised_by": "cctdaniel",
                 "state": "open",
-                "created_at": "2024-12-01T11:34:51Z",
+                "created_at": "2024-11-15T06:44:36Z",
                 "closed_at": null,
                 "merged_at": null
             },
             {
-                "title": "fix: host entry not created when user added to team in org",
-                "body": "## What does this PR do?\r\n\r\n<!-- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->\r\n\r\n- Fixes #17654  (GitHub issue number)\r\n- Fixes CAL-4732 (Linear issue number - should be visible at the bottom of the GitHub issue description)\r\n\r\n<!-- Please provide a loom video for visual changes to speed up reviews\r\n Loom Video: https://www.loom.com/\r\n-->\r\n\r\nhttps://www.loom.com/share/d4081b0c4caf498f8be1ed0727e055e0?sid=4217387e-8546-479a-a1a5-ad948f0b2ea0\r\n\r\n## Mandatory Tasks (DO NOT REMOVE)\r\n\r\n- [x] I have self-reviewed the code (A decent size PR without self-review might be rejected).\r\n- [x] I have updated the developer docs in /docs if this PR makes changes that would require a [documentation change](https://cal.com/docs). If N/A, write N/A here and check the checkbox.\r\n- [ ] I confirm automated tests are in place that prove my fix is effective or that my feature works.\r\n\r\n",
-                "raised_by": "kart1ka",
+                "title": "feat(pulse): add pulse contracts",
+                "body": null,
+                "raised_by": "cctdaniel",
                 "state": "open",
-                "created_at": "2024-12-01T08:08:16Z",
+                "created_at": "2024-11-04T14:11:23Z",
                 "closed_at": null,
                 "merged_at": null
             }
         ],
-        "topics": [
-            "open-source",
-            "typescript",
-            "nextjs",
-            "next-auth",
-            "postgresql",
-            "prisma",
-            "t3-stack",
-            "tailwindcss",
-            "trpc",
-            "turborepo",
-            "zod"
-        ],
+        "topics": [],
         "commit_frequency": 1.0,
-        "tech_score": 74
+        "tech_score": 53
     }
 }
